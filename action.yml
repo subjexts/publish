@@ -1,0 +1,22 @@
+name: subjexts publish
+description: "Send a book's build record (pages, headings, page-to-source map) to the subjexts platform after your own build step. Needs the id-token: write permission; no secret."
+author: subjexts
+branding:
+  icon: book-open
+  color: green
+inputs:
+  manifest:
+    description: Path to subjexts.yml
+    default: subjexts.yml
+  output:
+    description: "The built site folder (default from the manifest, else _book for Quarto or _build/html for Jupyter Book)"
+    required: false
+  endpoint:
+    description: "The platform's publish endpoint (change only for a self-hosted platform)"
+    required: false
+outputs:
+  build:
+    description: The build id the platform recorded
+runs:
+  using: node20
+  main: dist/index.js
